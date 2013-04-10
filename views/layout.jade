@@ -1,0 +1,34 @@
+!!! 5
+html(lang='en')
+head
+    meta(charset='utf-8')
+    title HNang
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/layout.css')    
+    script(src='/javascripts/jquery.js')      
+    script(src='/bootstrap/js/bootstrap.min.js')
+    style
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+  body
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        .container
+          button.btn.btn-navbar(type='button', data-toggle='collapse', data-target='.nav-collapse')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.brand(href='#') HNang
+          .nav-collapse.collapse
+            ul.nav
+              li.active
+                a(href='/admin') Links
+              li
+                a(href='/admin/#') Interviews
+            ul.nav.pull-right
+              li
+                a(href='/') Homepage &raquo;
+    .container
+      block content

@@ -1,0 +1,17 @@
+{
+  "name": "hnang",
+  "description": "Hacker News Search in Angular.js",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.2.x"
+  },
+  "dependencies": {
+    "express": "3.x",
+    "jade": "*",
+    "node-sass": "~0.4.0",
+    "restler": "~2.0.1",
+    "moment": "~2.0.0"
+  }
+}
