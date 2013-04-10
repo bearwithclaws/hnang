@@ -1,3 +1,13 @@
 extend layout
 block content
-  h2 hello world
+  table.table.table-bordered
+    tbody
+      each result in results
+        tr
+          td
+            a(href=result.item.url ? result.item.url : 'http://news.ycombinator.com/item?id=#{result.item.id}', target="_blank") #{result.item.title}
+            if result.item.url
+              a(href='http://news.ycombinator.com/item?id=#{result.item.id}')  (comments)
+          td #{result.item.points}
+          td #{result.item.num_comments}
+          td #{result.item.create_ts}

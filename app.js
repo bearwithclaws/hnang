@@ -18,7 +18,30 @@ app.configure(function() {
 });
 
 app.get('/', function(req, res) {
-  res.render('index');
+  rest.get('http://api.thriftdb.com/api.hnsearch.com/items/_search', {
+    query: {
+      q: '"Show HN"',
+      limit: 100,
+      sortby: 'create_ts desc',
+      'filter[fields][type]': 'submission'
+    }
+  }).on('complete', function(result) {
+    res.render('index', { results: JSON.parse(result).results } );
+  });
+});
+
+app.get('/page/:page_num', function(req, res) {
+  rest.get('http://api.thriftdb.com/api.hnsearch.com/items/_search', {
+    query: {
+      q: '"Show HN"',
+      limit: 100,
+      start: req.params.page_num*100,
+      sortby: 'create_ts desc',
+      'filter[fields][type]': 'submission'
+    }
+  }).on('complete', function(result) {
+    res.render('index', { results: JSON.parse(result).results } );
+  });
 });
 
 // Server
