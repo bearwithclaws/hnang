@@ -20,10 +20,11 @@ app.configure(function() {
 app.get('/', function(req, res) {
   rest.get('http://api.thriftdb.com/api.hnsearch.com/items/_search', {
     query: {
-      q: '"Show HN"',
+      q: '"Show HN"',      
       limit: 100,
       sortby: 'create_ts desc',
-      'filter[fields][type]': 'submission'
+      'filter[fields][type]': 'submission',
+      'filter[queries][]': 'points:[2 TO 1000]'      
     }
   }).on('complete', function(result) {
     res.render('index', { results: JSON.parse(result).results } );
@@ -37,7 +38,8 @@ app.get('/page/:page_num', function(req, res) {
       limit: 100,
       start: req.params.page_num*100,
       sortby: 'create_ts desc',
-      'filter[fields][type]': 'submission'
+      'filter[fields][type]': 'submission',
+      'filter[queries][]': 'points:[2 TO 1000]'            
     }
   }).on('complete', function(result) {
     res.render('index', { results: JSON.parse(result).results } );
